@@ -12,6 +12,10 @@ const RecordSchema = new mongoose.Schema({
     type: ObjectId,
     ref: 'Doctor'
   },
+  hospital: {
+    type: ObjectId,
+    ref: 'Hospital'
+  },
   files: [{
     type: String,
     file: String
@@ -22,5 +26,10 @@ const RecordSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
-
+RecordSchema.pre('find', function() {
+  this.populate('hospital user doctor');
+});
+RecordSchema.pre('findOne', function() {
+  this.populate('hospital user doctor');
+});
 module.exports = mongoose.model('Record', RecordSchema);

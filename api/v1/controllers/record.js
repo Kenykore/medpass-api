@@ -19,6 +19,7 @@ exports.createRecord = async (req, res, next) => {
       user: ObjectID(req.body.userId),
       doctor: ObjectID(user.user_id),
       doctorId: user.user_id,
+      hospital: ObjectID(user.hospitalId),
     });
     const savedRecord = await record.save();
     return response.sendSuccess({res, message: 'Record created successfully', body: {record: savedRecord}});

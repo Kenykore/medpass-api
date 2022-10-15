@@ -27,7 +27,12 @@ const RecordRequestModel = new mongoose.Schema({
   timestamps: true
 });
 
-
+RecordRequestModel.pre('find', function() {
+  this.populate('user doctor');
+});
+RecordRequestModel.pre('findOne', function() {
+  this.populate('user doctor');
+});
 module.exports = mongoose.model('RecordRequesy', RecordRequestModel);
 
 
