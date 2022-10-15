@@ -81,8 +81,8 @@ exports.fetchAllRecordsByDoc = async (req, res, next) => {
       return response.sendError({res, message: 'User Id is required', statusCode: status.BAD_REQUEST});
     }
     const dataPerPage = parseInt(req.query.limit) || 10;
-    const currentPage = parseInt(req.query.page) || 0;
-    const skip = currentPage * dataPerPage;
+    const currentPage = parseInt(req.query.page) || 1;
+    const skip = (currentPage-1) * dataPerPage;
     const patient = await User.findById(user).lean();
     if (patient.revokedDoctors.includes(doc.user_id)) {
       return response.sendError({res, message: 'You have been revoked access to this patient', statusCode: status.BAD_REQUEST});

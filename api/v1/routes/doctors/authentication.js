@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // middleware
-const {verifyUser, verifyToken} = require('../../../../middlewares/verify_auth');
+const {verifyUser,} = require('../../../../middlewares/verify_auth');
 
 const AuthenticationController = require('../../controllers/authentication');
 

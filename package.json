@@ -1,6 +1,6 @@
 {
-  "name": "Comestibles-API",
-  "description": "API for Comestibles",
+  "name": "MedPass-API",
+  "description": "API for MedPass",
   "scripts": {
     "lint": "eslint .",
     "start": "node index.js",

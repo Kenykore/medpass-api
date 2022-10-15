@@ -37,10 +37,13 @@ app.use(cors({
 const userAuthRouter = require('./api/v1/routes/users/authentication');
 const docAuthRouter = require('./api/v1/routes/doctors/authentication');
 const recordsRouter=require('./api/v1/routes/record');
+const userDocRouter = require('./api/v1/routes/doctors/users');
 
 app.use('/auth/doctor',docAuthRouter);
 app.use('/auth/user', userAuthRouter);
 app.use('/records', recordsRouter);
+app.use('/patients', userDocRouter);
+
 app.get('/', (req, res, next)=>{
   return res.send(`Your ip address is ${req.ip} and ${req.ips}`);
 });
